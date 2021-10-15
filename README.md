@@ -10,6 +10,14 @@ plugin folder will not be committed now.
 # Plugin
 To be soon.
 
+# How to use
+- run directly by source code
+1. Add the plugin folder to root path
+2. run 'main.py'
+- run exe
+1. Add the plugin folder and 'config.yaml' to root path
+2. run 'Oxygen.exe'
+
 # How to build
 You can use pyinstaller to build this project. Of course, you can run this project directly.
 
