@@ -1,0 +1,8 @@
+database:
+    filename: "savedata.db"
+
+server:
+    host: localhost
+    backend_port: 8080
+    frontend_port: 8000
+

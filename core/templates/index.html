@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/layui/2.6.8/css/layui.min.css"/>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/layui/2.6.8/layui.min.js"></script>
+
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-body">
+        <div class="site-content">
+            <h1 class="site-h1">Welcome to use {{appname}}</h1>
+            <br>
+            <blockquote class="layui-elem-quote">
+                {{appname}} is a FREE software. If you bought this software, you have been scammed.
+            </blockquote>
+            <div class="layui-card">
+                <div class="layui-card-header">Server Info</div>
+                <div class="layui-card-body">
+                    Backend Service URL: {{host}}:{{backend_port}}
+                    Web Portal URL: {{host}}:{{frontend_port}}
+                </div>
+            </div>
+            <div class="layui-card">
+                <div class="layui-card-header">Change Logs</div>
+                <div class="layui-card-body">
+                    <div class="site-title">v 0.0.1 beta</div>
+                    <div class="site-text">
+                        <p>·First public beta version</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

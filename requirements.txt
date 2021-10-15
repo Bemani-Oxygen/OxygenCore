@@ -1,0 +1,12 @@
+PyYAML
+fastapi
+pycryptodome
+aiosqlite
+SQLAlchemy
+passlib
+uvicorn
+pydantic
+python-dotenv
+jinja2
+aiofiles
+python-multipart

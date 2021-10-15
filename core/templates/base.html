@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>{{appname}} {{version}}</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/layui/2.6.8/css/layui.min.css"/>
+    <style>
+        /* 移动端 */
+        @media screen and (max-width: 768px) {
+            .layui-layout-admin .layui-layout-left,
+            .layui-layout-admin .layui-body,
+            .layui-layout-admin .layui-footer {
+                left: 0;
+            }
+
+            .layui-layout-admin .layui-side,
+            .layui-layout-admin .layui-logo {
+                display: none;
+            }
+        }
+    </style>
+    {% block head %}{% endblock %}
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/layui/2.6.8/layui.min.js"></script>
+<script>
+    let menuMap = JSON.parse('{{ menuMap | tojson }}');
+    let url = '{{url}}';
+    window.onload = function () {
+        for ([plugin_name, menuList] of Object.entries(menuMap)) {
+            $("#menu").append('<a class="" href="javascript:;">' + plugin_name + '</a>');
+            $("#menu").append('<dl class="layui-nav-child" id="' + plugin_name + '_menuList">');
+            menuList.forEach(function (menu, index) {
+                $("#" + plugin_name + "_menuList").append('    <dd><a href=\'' + menu.href + '\'">' + menu.title + '</a></dd>');
+            });
+        }
+        //重新渲染页面元素
+        layui.use('element', function () {
+            var element = layui.element;
+            element.init();
+        });
+
+        load(url);
+    };
+
+    function load(url) {
+        $("#container").load(url, function (response, status, xhr) {
+            if (status === "error") {
+                layer.msg('Failed to load ' + url);
+            }
+        });
+    }
+
+    layui.use(['element', 'layer', 'util'], function () {
+        let element = layui.element
+            , layer = layui.layer
+            , util = layui.util
+            , $ = layui.$;
+
+        util.event('lay-header-event', {
+            menuLeft: function (othis) {
+                let btn = $("#leftEnumIcon");
+                if (btn.hasClass('layui-icon-spread-left')) {
+                    menuHide(btn);
+                    btn.addClass('btn-index');
+                } else if (btn.has('layui-icon-shrink-right')) {
+                    btn.removeClass('btn-index');
+                    menuShow(btn);
+                }
+
+                $(window).resize(function () {
+                    let width = $(document.body).width();
+                    let btn = $("leftEnumIcon");
+                    if (width < 1000) {
+                        if (btn.hasClass('layui-icon-spread-left')) {
+                            menuShow(btn);
+                        }
+                    } else {
+                        if (!btn.hasClass('btn-index')) {
+                            if (btn.hasClass('layui-icon-shrink-right')) {
+                                menuHide(btn);
+
+                            }
+                        }
+                    }
+                });
+
+                function menuShow(btn) {
+                    btn.removeClass('layui-icon-shrink-right').addClass('layui-icon-spread-left');
+                    $(".layui-side").animate({width: 'toggle'});
+                    $(".layui-logo").animate({width: 'toggle'});
+                    $(".layui-layout-left").animate({left: '200px'});
+                    $(".layui-body").animate({left: '200px'});
+                    $(".layui-footer").animate({left: '200px'});
+                }
+
+                function menuHide(btn) {
+                    btn.removeClass(' layui-icon-spread-left').addClass('layui-icon-shrink-right');
+                    $(".layui-side").animate({width: 'toggle'}); //toggle如果原来div是隐藏的就会把元素显示，如果原来是显示则隐藏
+                    $(".layui-logo").animate({width: 'toggle'});
+                    $(".layui-layout-left").animate({left: '0px'});
+                    $(".layui-body").animate({left: '0px'});
+                    $(".layui-footer").animate({left: '0px'});
+                }
+            }
+        });
+    });
+</script>
+{% block script %}{% endblock %}
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo layui-bg-black">
+            <a href="/">{{appname}} {{version}}</a>
+        </div>
+        <ul class="layui-nav layui-layout-left">
+            <!-- 移动端显示 -->
+            <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-header-event="menuLeft">
+                <i id="leftEnumIcon" class="layui-icon layui-icon-shrink-right"></i>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black layui-hidden-xs-inline-block">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed" id="menu">
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div id="container"></div>
+    </div>
+</div>
+
+</body>
+</html>
