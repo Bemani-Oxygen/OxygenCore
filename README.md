@@ -12,7 +12,7 @@ Put plugin packages under 'plugins' folder.
 
 Only support iidx plugin now.
 
-Path example:
+Path examples:
 ```
 plugins/iidx/
 plugins/sdvx/
