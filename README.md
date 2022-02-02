@@ -8,7 +8,16 @@ This project will only support iidx now and you can easily add other games by yo
 plugin folder will not be committed now.
 
 # Plugin
-To be soon.
+Put plugin packages under 'plugins' folder.
+
+Only support iidx plugin now.
+
+Path examples:
+```
+plugins/iidx/
+plugins/sdvx/
+...
+```
 
 # How to use
 - run directly by source code
