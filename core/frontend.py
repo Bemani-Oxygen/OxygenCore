@@ -5,7 +5,7 @@ import os
 import importlib
 
 from typing import Any, Dict
-from fastapi import FastAPI, Response, Request, APIRouter
+from fastapi import FastAPI, Response, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates

@@ -9,5 +9,3 @@ if DEBUG:
 else:
     root_temp = os.path.dirname(os.path.abspath(__file__)).replace("\\core", "")
     root_exe = os.path.dirname(sys.executable)
-
-

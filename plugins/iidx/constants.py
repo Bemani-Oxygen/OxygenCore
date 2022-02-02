@@ -1,0 +1,32 @@
+from typing_extensions import Final
+
+class VersionConstants:
+    IIDX: Final[int] = 1
+    IIDX_2ND_STYLE: Final[int] = 2
+    IIDX_3RD_STYLE: Final[int] = 3
+    IIDX_4TH_STYLE: Final[int] = 4
+    IIDX_5TH_STYLE: Final[int] = 5
+    IIDX_6TH_STYLE: Final[int] = 6
+    IIDX_7TH_STYLE: Final[int] = 7
+    IIDX_8TH_STYLE: Final[int] = 8
+    IIDX_9TH_STYLE: Final[int] = 9
+    IIDX_10TH_STYLE: Final[int] = 10
+    IIDX_RED: Final[int] = 11
+    IIDX_HAPPY_SKY: Final[int] = 12
+    IIDX_DISTORTED: Final[int] = 13
+    IIDX_GOLD: Final[int] = 14
+    IIDX_DJ_TROOPERS: Final[int] = 15
+    IIDX_EMPRESS: Final[int] = 16
+    IIDX_SIRIUS: Final[int] = 17
+    IIDX_RESORT_ANTHEM: Final[int] = 18
+    IIDX_LINCLE: Final[int] = 19
+    IIDX_TRICORO: Final[int] = 20
+    IIDX_SPADA: Final[int] = 21
+    IIDX_PENDUAL: Final[int] = 22
+    IIDX_COPULA: Final[int] = 23
+    IIDX_SINOBUZ: Final[int] = 24
+    IIDX_CANNON_BALLERS: Final[int] = 25
+    IIDX_ROOTAGE: Final[int] = 26
+    IIDX_HEROIC_VERSE: Final[int] = 27
+    IIDX_BISTROVER: Final[int] = 28
+    IIDX_CASTHOUR: Final[int] = 29

@@ -27,6 +27,7 @@ def load_config(filename: str) -> None:
     config['database']['engine'] = Data.create_engine(config)
     config['appname'] = 'Oxygen'
 
+
 async def run() -> None:
     global config
     global DEBUG
